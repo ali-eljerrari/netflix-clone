@@ -58,6 +58,7 @@ function PaginatedItems() {
         onSubmit={(e) => {
           e.preventDefault();
           setTerm(input);
+          setInput("");
         }}
         className="flex flex-col m-4"
       >
