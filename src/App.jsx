@@ -136,9 +136,8 @@ function Items() {
                   {result?.vote_average
                     ? result?.vote_average?.toFixed(1)
                     : "unknown"}
-                  {result?.vote_average ? (
-                    <StarIcon color="yellow.400" className="ml-1" />
-                  ) : null}
+
+                  <StarIcon color="yellow.400" className="ml-1" />
                 </span>
               </Text>
             </CardFooter>
