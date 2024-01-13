@@ -32,7 +32,7 @@ body {
 .previous,
 .next {
   margin: 0 2px;
-  padding: 4px 6px;
+  padding: 4px 3px;
   cursor: pointer;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -47,7 +47,7 @@ body {
 /* Page numbers */
 .page {
   margin: 0 2px;
-  padding: 4px 6px;
+  padding: 4px 2px;
   cursor: pointer;
   border: 1px solid #ddd;
   border-radius: 4px;
