@@ -23,27 +23,14 @@ function App() {
     const fetchData = async () => {
       await Axios.get(`/search/movie?query=${term}&page=${page}`)
         .then(({ data }) => {
-          const filteredMovies = {
-            ...data,
-            results: data?.results?.filter((movie) =>
-              !movie?.id ||
-              !movie?.title ||
-              !movie?.original_language ||
-              !movie?.release_date ||
-              !movie?.vote_average ||
-              !movie?.poster_path ||
-              !movie?.overview
-                ? null
-                : movie
-            ),
-          };
-
-          setMovies(filteredMovies);
+          setMovies(data);
         })
         .catch((err) => console.error(err));
     };
 
-    fetchData();
+    if (term) {
+      fetchData();
+    }
   }, [page, setMovies, term]);
 
   return (
@@ -118,26 +105,40 @@ function Items() {
             loading="lazy"
             maxW={{ base: "100%", sm: "200px" }}
             maxH={{ base: "100%", sm: "200px" }}
-            src={`https://image.tmdb.org/t/p/w500${result?.poster_path}`}
+            src={
+              result?.poster_path
+                ? `https://image.tmdb.org/t/p/w500${result?.poster_path}`
+                : "https://unsplash.com/photos/ZnLprInKM7s/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8bm90JTIwZm91bmR8ZW58MHx8fHwxNzA1MTQ4NTE5fDA&force=true&w=640"
+            }
             alt={result?.title}
           />
           <Stack>
             <CardBody className="flex flex-col">
               <Heading size="md">{result?.title}</Heading>
-              <Text py="2">{result?.overview}</Text>
+              <Text py="2">
+                {result?.overview ? result?.overview : "Not Found!"}
+              </Text>
             </CardBody>
             <CardFooter>
               <Text>{result?.adult ? "+18" : ""}</Text>
               <Text className="flex mb-2">
                 <span className="mr-2">
-                  {result?.original_language.toUpperCase()}{" "}
+                  {result?.original_language
+                    ? result?.original_language.toUpperCase()
+                    : "unknown"}{" "}
                 </span>
                 <span className="mr-2">
-                  {result?.release_date?.split("-")[0]}
+                  {result?.release_date
+                    ? result?.release_date?.split("-")[0]
+                    : "unknown"}
                 </span>
                 <span className="flex flex-row items-center">
-                  {result?.vote_average?.toFixed(1)}
-                  <StarIcon color="yellow.400" className="ml-1" />
+                  {result?.vote_average
+                    ? result?.vote_average?.toFixed(1)
+                    : "unknown"}
+                  {result?.vote_average ? (
+                    <StarIcon color="yellow.400" className="ml-1" />
+                  ) : null}
                 </span>
               </Text>
             </CardFooter>
