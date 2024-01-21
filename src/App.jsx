@@ -34,7 +34,7 @@ function App() {
   }, [page, setMovies, term]);
 
   return (
-    <div className="p-4">
+    <div className="flex items-center  justify-center p-4">
       <PaginatedItems itemsPerPage={movies.page} />
     </div>
   );
@@ -53,18 +53,18 @@ function PaginatedItems() {
   };
 
   return (
-    <>
+    <div className="flex flex-col items-center jus w-full lg:w-8/12 m-4">
       <form
+        className="flex flex-col w-full"
         onSubmit={(e) => {
           e.preventDefault();
           setTerm(input);
         }}
-        className="flex flex-col m-4"
       >
         <Input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="movie..."
+          placeholder="Search for a movie..."
           size="sm"
           className="text-center mb-2"
         />
@@ -83,7 +83,7 @@ function PaginatedItems() {
         previousLabel="< Previous"
         renderOnZeroPageCount={null}
       />
-    </>
+    </div>
   );
 }
 
@@ -91,14 +91,14 @@ function Items() {
   const { movies } = useStore();
 
   return (
-    <div className="flex flex-wrap lg:justify-center  mb-20">
+    <div className="flex flex-col  flex-wrap justify-center mb-20">
       {movies?.results?.map((result) => (
         <Card
           key={result?.id}
           direction={{ base: "column", sm: "row" }}
           overflow="hidden"
           variant="outline"
-          className="lg:w-4/12 m-2"
+          className="m-2"
         >
           <Image
             objectFit="cover"
