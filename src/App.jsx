@@ -59,6 +59,7 @@ function PaginatedItems() {
         onSubmit={(e) => {
           e.preventDefault();
           setTerm(input);
+          setInput("");
         }}
       >
         <Input
@@ -76,11 +77,11 @@ function PaginatedItems() {
       <ReactPaginate
         className="pagination"
         breakLabel="..."
-        nextLabel="Next >"
+        nextLabel=">>"
         onPageChange={handlePageClick}
         pageRangeDisplayed={5}
         pageCount={pageCount}
-        previousLabel="< Previous"
+        previousLabel="<<"
         renderOnZeroPageCount={null}
       />
     </div>

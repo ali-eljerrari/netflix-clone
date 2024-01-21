@@ -32,8 +32,8 @@ body {
 /* Previous and Next buttons */
 .previous,
 .next {
-  margin: 0 5px;
-  padding: 8px 12px;
+  margin: 0 2px;
+  padding: 4px 3px;
   cursor: pointer;
   border: 1px solid #ddd;
   border-radius: 4px;
@@ -47,8 +47,8 @@ body {
 
 /* Page numbers */
 .page {
-  margin: 0 5px;
-  padding: 8px 12px;
+  margin: 0 2px;
+  padding: 4px 2px;
   cursor: pointer;
   border: 1px solid #ddd;
   border-radius: 4px;
